@@ -4,7 +4,7 @@
              x:Class="DoToo.Views.ItemView"
              Title="New todo item">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="Binding Save"/>
+        <ToolbarItem Text="Save" Command="{Binding Save}"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="14">

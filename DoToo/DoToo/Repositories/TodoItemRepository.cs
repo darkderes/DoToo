@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SQLite;
 using System.IO;
 using System.Data;
+using Windows.Storage;
 
 namespace DoToo.Repositories
 {
@@ -14,7 +15,7 @@ namespace DoToo.Repositories
 
         private SQLiteAsyncConnection connection;
         public event EventHandler<TodoItem> OnItemAdded;
-        public event EventHandler<TodoItem> OnItemUpdate;
+        public event EventHandler<TodoItem> OnItemUpdated;
 
 
 
@@ -24,8 +25,10 @@ namespace DoToo.Repositories
             {
                 return;
             }
-            var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var databasePath = Path.Combine(documentPath, "TodoItems.db");
+            // var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            //var documentPath = Environment.GetFolderPath(ApplicationData.Current.LocalFolder.Path);
+            var documentPath = @"C:\Users\JDARD\Documentos";
+            var databasePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "TodoItems.db");
 
             connection = new SQLiteAsyncConnection(databasePath);
             await connection.CreateTableAsync<TodoItem>();
@@ -68,7 +71,7 @@ namespace DoToo.Repositories
         {
             await CreateConnection();
             await connection.UpdateAsync(item);
-            OnItemUpdate?.Invoke(this, item);
+            OnItemUpdated?.Invoke(this, item);
         }
     }
 }

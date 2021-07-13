@@ -3,6 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoToo.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="NavigationPage" >
+                <Setter Property="BarBackgroundColor" Value="#a25ebb" />
+                <Setter Property="BarTextColor" Value="#FFFFFF" />
+            </Style>
 
+            <Style x:Key="FilterButton" TargetType="Button">
+                <Setter Property="Margin" Value="15"></Setter>
+                <Setter Property="BorderWidth" Value="1"></Setter>
+                <Setter Property="BorderRadius" Value="6"></Setter>
+                <Setter Property="BorderColor" Value="Silver"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+            
+            <Color x:Key="CompletedColor">#1c8859</Color>
+            <Color x:Key="ActiveColor">#D3D3D3</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
